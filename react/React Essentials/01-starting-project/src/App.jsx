@@ -1,38 +1,7 @@
-import reactImage from './assets/react-core-concepts.png';
 import { CORE_CONCEPTS } from './data';
-
-const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
-function genRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
-
-function Header() {
-  
-  const description = reactDescriptions[genRandomInt(2)];
-
-  return (
-    <header>
-        <img src={reactImage} alt="Stylized atom" />
-        <h1>React Essentials</h1>
-        <p>
-          {description} React concepts you will need for almost any app you are
-          going to build!
-        </p>
-      </header>
-  )
-}
-
-//Reusable custom componant
-function CoreConcept(props) {
-  console.log(props);
-  return (
-    <li>
-      <img src={props.img} alt='componant' />
-      <h3>{props.title}</h3>
-      <p>{props.description}</p>
-    </li>
-  )
-}
+import Header from './componants/Header/Header';
+import CoreConcept from './componants/CoreConcept';
+import TabButton from './componants/TabButton'
 
 function App() {
   return (
@@ -40,16 +9,24 @@ function App() {
       <Header />
       <main>
         <section id='core-concepts'>
-          <h2>Core Concept</h2>
-           <ul>
-            {CORE_CONCEPTS.map((item) => {
-              return ( 
-                <CoreConcept img={item.image} title={item.title} description={item.description} />
-              )
-            })}
-            </ul> 
+        <h2>Core Concept</h2>
+        <ul>
+        {CORE_CONCEPTS.map((item) => {
+          return ( 
+            <CoreConcept img={item.image} title={item.title} description={item.description} />
+          )
+        })}
+        </ul>
         </section>
-        <h2>Time to get started!</h2>
+        <section id='examples'>
+          <h2>Examples</h2>
+          <menu>
+            <TabButton>Componants</TabButton>
+            <TabButton>JSX</TabButton>
+            <TabButton>Props</TabButton>
+            <TabButton>State</TabButton>
+          </menu>
+        </section>
       </main>
     </div>
   );
