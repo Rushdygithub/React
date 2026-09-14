@@ -1,14 +1,10 @@
 
-function TabButton(props) {
+function TabButton({children, onSelect, isActive}) {
 
-   function handleClick() {
-     console.log('clicked');
-   }  
- 
    return (
-        <li>
-           <button onClick={()=> handleClick()}>{props.children}</button>
-        </li>
+      <li>
+         <button className={isActive && 'active'} onClick={onSelect}>{children}</button>
+      </li>
    );
 }
 
